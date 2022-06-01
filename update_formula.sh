@@ -33,7 +33,7 @@ OSX_SHA256=$(shasum -a 256 "${OSX_BINPATH}" | awk '{print $1}')
 
 
 TEMPLATE="# This is an auto-generated file. DO NOT EDIT
-class D_${CLASSNAME} < Formula
+class $(tr 'a-z' 'A-Z' <<< ${CLASSNAME:0:1})${CLASSNAME:1} < Formula
     desc \"${DESC}\"
     homepage \"https://github.com/dezhaoli/${CLI_NAME}\"
     version \"${VERSION}\"
