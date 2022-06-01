@@ -1,5 +1,5 @@
 # This is an auto-generated file. DO NOT EDIT
-class Xargparse < Formula
+class D_xargparse < Formula
     desc "Parser for command-line options, arguments and sub-commands"
     homepage "https://github.com/dezhaoli/xargparse"
     version "1.0.0"
