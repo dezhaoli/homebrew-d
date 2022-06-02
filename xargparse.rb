@@ -12,7 +12,7 @@ class Xargparse < Formula
 
 
     license "Apache-2.0"
-    head "https://github.com/dezhaoli/xargparse.git", branch: "master"
+    head "https://github.com/dezhaoli/xargparse.git", branch: "main"
 
     def install
       bin.install "xargparse" => "xargparse"
