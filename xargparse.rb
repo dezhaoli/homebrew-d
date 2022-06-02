@@ -4,15 +4,15 @@ class Xargparse < Formula
     homepage "https://github.com/dezhaoli/xargparse"
     version "1.0.0"
 
+    url "https://github.com/dezhaoli/xargparse/archive/1.0.0.tar.gz"
+
     if OS.mac?
       sha256 "5969ec0fe44e944cdeba112ca196380edcf4c28b7053a5e4eee4b3a6e4847ec1"
     end
 
-    baseurl = "https://github.com/dezhaoli/xargparse/archive/"
-    @@bin_name = "1.0.0.tar.gz"
-    url baseurl + @@bin_name
 
     license "Apache-2.0"
+    head "https://github.com/dezhaoli/xargparse.git", branch: "master"
 
     def install
       bin.install "xargparse" => "xargparse"
