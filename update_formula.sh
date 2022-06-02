@@ -48,6 +48,9 @@ class $(tr 'a-z' 'A-Z' <<< ${CLASSNAME:0:1})${CLASSNAME:1} < Formula
     license \"Apache-2.0\"
     head \"${URL_BASE}.git\", branch: \"main\"
 
+    depends_on \"bash\"
+    depends_on \"coreutils\"
+
     def install
       bin.install \"${CLI_NAME}\" => \"${CLI_NAME}\"
     end

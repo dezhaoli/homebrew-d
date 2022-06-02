@@ -14,6 +14,9 @@ class Xargparse < Formula
     license "Apache-2.0"
     head "https://github.com/dezhaoli/xargparse.git", branch: "main"
 
+    depends_on "bash"
+    depends_on "coreutils"
+
     def install
       bin.install "xargparse" => "xargparse"
     end
