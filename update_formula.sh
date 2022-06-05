@@ -21,6 +21,11 @@ if [ "${CLI_NAME}" = "xargparse" ]; then
   URL_BASE="https://github.com/dezhaoli/xargparse"
   CLASSNAME="xargparse"
   DESC="Parser for command-line options, arguments and sub-commands"
+
+  CAVEATS="Add the following line to your ~/.bash_profile:
+          [[ -r \"#{bin}/xcomplete\" ]] && . \"#{bin}/xcomplete\""
+  EX_INSTALL="bin.install \"xcomplete\" => \"xcomplete\"
+      bash_completion.install_symlink bin/\"xcomplete\""
 else
   echo "Unsupported binary: ${CLI_NAME}"
   exit 1
@@ -53,7 +58,16 @@ class $(tr 'a-z' 'A-Z' <<< ${CLASSNAME:0:1})${CLASSNAME:1} < Formula
 
     def install
       bin.install \"${CLI_NAME}\" => \"${CLI_NAME}\"
+      ${EX_INSTALL}
     end
+
+
+    def caveats
+      <<~EOS
+        ${CAVEATS}
+      EOS
+    end
+    
 
     test do
       assert_match(/^usage: ${CLI_NAME}/, shell_output(\"#{bin}/${CLI_NAME}\").strip)
