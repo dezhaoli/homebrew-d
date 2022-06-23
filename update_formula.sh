@@ -25,7 +25,6 @@ if [ "${CLI_NAME}" = "xargparse" ]; then
   CAVEATS="Add the following line to your ~/.bash_profile:
           [[ -r \"#{bin}/xcomplete\" ]] && . \"#{bin}/xcomplete\""
   EX_INSTALL="
-      bin.install \"xargparse\" => \"xargparse\"
       bin.install \"xcomplete\" => \"xcomplete\"
       bash_completion.install_symlink bin/\"xcomplete\"
       "
@@ -74,6 +73,7 @@ class $(tr 'a-z' 'A-Z' <<< ${CLASSNAME:0:1})${CLASSNAME:1} < Formula
     depends_on \"coreutils\"
 
     def install
+      bin.install \"${CLI_NAME}\" => \"${CLI_NAME}\"
       ${EX_INSTALL}
     end
 

@@ -18,6 +18,7 @@ class D < Formula
     depends_on "coreutils"
 
     def install
+      bin.install "d" => "d"
       
       bin.install "xformat" => "xformat"
       bin.install "xpair" => "xpair"
