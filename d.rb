@@ -2,9 +2,9 @@
 class D < Formula
     desc "X toolkit"
     homepage "https://github.com/dezhaoli/d"
-    version "1.0.0"
+    version "2.0.0"
 
-    url "https://github.com/dezhaoli/d/archive/1.0.0.tar.gz"
+    url "https://github.com/dezhaoli/d/archive/2.0.0.tar.gz"
 
     if OS.mac?
       sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
@@ -20,8 +20,20 @@ class D < Formula
     def install
       bin.install "d" => "d"
       
+      bin.install "xbkapi" => "xbkapi"
+      bin.install "xcatch-build-err" => "xcatch-build-err"
       bin.install "xformat" => "xformat"
+      bin.install "xgcloud" => "xgcloud"
+      bin.install "gcloud/form_file.py" => "gcloud/form_file.py"
+      bin.install "gcloud/gcloud_api_v1.py" => "gcloud/gcloud_api_v1.py"
+      bin.install "gcloud/gcloud_api_v2.py" => "gcloud/gcloud_api_v2.py"
+      bin.install "gcloud/gcloud_openapi.py" => "gcloud/gcloud_openapi.py"
+      bin.install "xlink" => "xlink"  
       bin.install "xpair" => "xpair"
+      bin.install "xparallel" => "xparallel"
+      bin.install "xrecord" => "xrecord"
+      bin.install "xrobot" => "xrobot"
+      bin.install "xsvn" => "xsvn"
       bin.install "xxcodebuild" => "xxcodebuild"
       
     end
