@@ -20,15 +20,17 @@ class D < Formula
     def install
       bin.install "d" => "d"
       
-      bin.install "xbkapi" => "xbkapi"
-      bin.install "xcatch-build-err" => "xcatch-build-err"
-      bin.install "xformat" => "xformat"
-      bin.install "xgcloud" => "xgcloud"
       bin.install "gcloud_form_file.py" => "gcloud_form_file.py"
       bin.install "gcloud_api_v1.py" => "gcloud_api_v1.py"
       bin.install "gcloud_api_v2.py" => "gcloud_api_v2.py"
       bin.install "gcloud_openapi.py" => "gcloud_openapi.py"
+      
+      bin.install "xbkapi" => "xbkapi"
+      bin.install "xcatch-build-err" => "xcatch-build-err"
+      bin.install "xformat" => "xformat"
+      bin.install "xgcloud" => "xgcloud"
       bin.install "xlink" => "xlink"  
+      bin.install "xnifs" => "xnifs"  
       bin.install "xpair" => "xpair"
       bin.install "xparallel" => "xparallel"
       bin.install "xrecord" => "xrecord"
