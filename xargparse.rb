@@ -2,12 +2,12 @@
 class Xargparse < Formula
     desc "Parser for command-line options, arguments and sub-commands"
     homepage "https://github.com/dezhaoli/xargparse"
-    version "2.1.1"
+    version "2.1.2"
 
-    url "https://github.com/dezhaoli/xargparse/archive/2.1.1.tar.gz"
+    url "https://github.com/dezhaoli/xargparse/archive/2.1.2.tar.gz"
 
     if OS.mac?
-      sha256 "b98d2bfcb194f5b4c0ad5ca01697c23141e65fe4e9ea3f7c78a6bdde24849b25"
+      sha256 "6551e2ee69b3504c6af5267cd6026a25f2ef339030b8f25de97977120cbc6f2d"
     end
 
 
@@ -19,8 +19,10 @@ class Xargparse < Formula
 
     def install
       bin.install "xargparse" => "xargparse"
+      
       bin.install "xcomplete" => "xcomplete"
       bash_completion.install_symlink bin/"xcomplete"
+      
     end
 
 
