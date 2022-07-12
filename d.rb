@@ -2,12 +2,12 @@
 class D < Formula
     desc "X toolkit"
     homepage "https://github.com/dezhaoli/d"
-    version "2.0.0"
+    version "2.1.1"
 
-    url "https://github.com/dezhaoli/d/archive/2.0.0.tar.gz"
+    url "https://github.com/dezhaoli/d/archive/2.1.1.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
 
     if OS.mac?
-      sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+      sha256 "7ee81922d0f1aee91605b54a1f334374c642d834edbb63c4ae6c00d7fb3e2cc6"
     end
 
 
@@ -24,7 +24,7 @@ class D < Formula
       bin.install "gcloud_api_v1.py" => "gcloud_api_v1.py"
       bin.install "gcloud_api_v2.py" => "gcloud_api_v2.py"
       bin.install "gcloud_openapi.py" => "gcloud_openapi.py"
-      
+
       bin.install "xbkapi" => "xbkapi"
       bin.install "xcatch-build-err" => "xcatch-build-err"
       bin.install "xformat" => "xformat"
@@ -36,8 +36,9 @@ class D < Formula
       bin.install "xrecord" => "xrecord"
       bin.install "xrobot" => "xrobot"
       bin.install "xsvn" => "xsvn"
+      bin.install "xwsl-ex" => "xwsl-ex"
       bin.install "xxcodebuild" => "xxcodebuild"
-      
+
     end
 
 
@@ -47,8 +48,7 @@ class D < Formula
       EOS
     end
     
+    
 
-    test do
-      assert_match(/^usage: d/, shell_output("#{bin}/d").strip)
-    end
+
 end
