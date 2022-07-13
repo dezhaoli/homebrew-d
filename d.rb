@@ -5,12 +5,12 @@ require_relative "lib/private_strategy"
 class D < Formula
     desc "X toolkit"
     homepage "https://github.com/dezhaoli/d"
-    version "2.1.2"
+    version "2.1.3"
 
-    url "https://github.com/dezhaoli/d/archive/2.1.2.tar.gz", :using => GitHubPrivateRepositoryArchiveDownloadStrategy
+    url "https://github.com/dezhaoli/d/archive/2.1.3.tar.gz", :using => GitHubPrivateRepositoryArchiveDownloadStrategy
 
     if OS.mac?
-      sha256 "fa41e16e1164fdf7668bde514ddf8eda12855b8c64a9053823ff41da5fca35fc"
+      sha256 "7a9dd0e15f7c896910dc43ae142a9480e5a8574249d2f536dd0414cb017c4d37"
     end
 
 
