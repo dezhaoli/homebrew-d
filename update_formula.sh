@@ -34,11 +34,17 @@ function create()
         curl -H 'Authorization: token '$token  \
              -H 'Accept: application/vnd.github.v3.raw' \
              -L -o "${tmp_file}" -s "${base_url}/archive/${version}.tar.gz"
-        local STRATEGY=', :using => GitHubPrivateRepositoryReleaseDownloadStrategy'
+        local INSERT_1=', :using => GitHubPrivateRepositoryArchiveDownloadStrategy'
+        local INSERT_2='
+require "formula"
+require_relative "lib/private_strategy"'
+
     else
         curl -L -o "${tmp_file}" -s "${base_url}/archive/${version}.tar.gz"
-        local STRATEGY=
+        local INSERT_1=
+        local INSERT_2=
     fi
+
     if $is_test;then
         local TEST="
     test do
@@ -46,19 +52,21 @@ function create()
     end"
     else
         local TEST=
+
     fi
     
 
     local osx_sha256=$(shasum -a 256 "${tmp_file}" | awk '{print $1}')
 
 
-    TEMPLATE="# This is an auto-generated file. DO NOT EDIT
+    TEMPLATE="# This is an auto-generated file. DO NOT EDIT 
+$INSERT_2
 class $(tr 'a-z' 'A-Z' <<< ${class_name:0:1})${class_name:1} < Formula
     desc \"${desction}\"
     homepage \"https://github.com/dezhaoli/${name}\"
     version \"${version}\"
 
-    url \"${base_url}/archive/${version}.tar.gz\"$STRATEGY
+    url \"${base_url}/archive/${version}.tar.gz\"$INSERT_1
 
     if OS.mac?
       sha256 \"${osx_sha256}\"
