@@ -98,7 +98,6 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   def initialize(url, name, version, **meta)
     super
   end
-
   def parse_url_pattern
     url_pattern = %r{https://github.com/([^/]+)/([^/]+)/releases/download/([^/]+)/(\S+)}
     unless @url =~ url_pattern
@@ -137,4 +136,20 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
     #GitHub::API.open_rest(release_url)
     GitHub.get_release(@owner, @repo, @tag)
   end
+end
+
+
+class GitHubPrivateRepositoryArchiveDownloadStrategy < GitHubPrivateRepositoryDownloadStrategy
+  def initialize(url, name, version, **meta)
+    super
+  end
+
+# https://github.com/dezhaoli/d/archive/2.1.1.tar.gz
+  private
+
+  def _fetch(url:, resolved_url:, timeout:)
+    curl_download url, "--header", "Authorization: token {@github_token}", "--header", "Accept: application/vnd.github.v3.raw",  to: temporary_path
+  end
+
+
 end
