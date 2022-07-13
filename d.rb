@@ -1,4 +1,7 @@
 # This is an auto-generated file. DO NOT EDIT
+require "formula"
+require_relative "lib/private_strategy"
+
 class D < Formula
     desc "X toolkit"
     homepage "https://github.com/dezhaoli/d"
