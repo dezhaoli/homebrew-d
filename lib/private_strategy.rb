@@ -74,7 +74,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
 
     validate_github_repository_access!
 
-    raise CurlDownloadStrategyError, "url=#{url} , github_token=#{@github_token}"
+    raise CurlDownloadStrategyError, "url=#{url} , github_token22=#{@github_token}"
   end
 
   def validate_github_repository_access!
