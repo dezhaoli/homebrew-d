@@ -73,6 +73,8 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     end
 
     validate_github_repository_access!
+
+    raise CurlDownloadStrategyError, "url={url} , github_token={@github_token}"
   end
 
   def validate_github_repository_access!
@@ -148,7 +150,7 @@ class GitHubPrivateRepositoryArchiveDownloadStrategy < GitHubPrivateRepositoryDo
   private
 
   def _fetch(url:, resolved_url:, timeout:)
-    curl_download url, "--header", "Authorization: token {@github_token}", "--header", "Accept: application/vnd.github.v3.raw",  to: temporary_path
+    curl_download url, "--header", "Authorization: token {@github_token}", "--header", "Accept: application/vnd.github.v3.raw", "-L", to: temporary_path
   end
 
 
