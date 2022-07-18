@@ -1,13 +1,14 @@
-# This is an auto-generated file. DO NOT EDIT
+# This is an auto-generated file. DO NOT EDIT 
+
 class Xargparse < Formula
     desc "Parser for command-line options, arguments and sub-commands"
     homepage "https://github.com/dezhaoli/xargparse"
-    version "2.2.0"
+    version "2.3.0"
 
-    url "https://github.com/dezhaoli/xargparse/archive/2.2.0.tar.gz"
+    url "https://github.com/dezhaoli/xargparse/archive/2.3.0.tar.gz"
 
     if OS.mac?
-      sha256 "ef3c1c5d55752d505597447ff33d0c20f7af44f3c0d391287a4c6f124b6a883b"
+      sha256 "54cc93e1f4daa81a8b7c9c903b26c99d96ef7e49bf1e9c35c027b11b3776995c"
     end
 
 
@@ -22,7 +23,7 @@ class Xargparse < Formula
       
       bin.install "xcomplete" => "xcomplete"
       bash_completion.install_symlink bin/"xcomplete"
-      
+
     end
 
 
@@ -33,8 +34,10 @@ class Xargparse < Formula
       EOS
     end
     
-
+    
     test do
       assert_match(/^usage: xargparse/, shell_output("#{bin}/xargparse").strip)
     end
+
+
 end
