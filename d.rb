@@ -10,7 +10,7 @@ class D < Formula
     url "https://github.com/dezhaoli/d/archive/2.2.2.tar.gz", :using => GitHubPrivateRepositoryArchiveDownloadStrategy
 
     if OS.mac?
-      sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+      sha256 "0163bbc6bbb09cb69e62c7c2a7df817beb5ae1157794d9c6bc176b7cf3a5ea4c"
     end
 
 
