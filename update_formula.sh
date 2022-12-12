@@ -48,7 +48,7 @@ require_relative "lib/private_strategy"'
     if $is_test;then
         local TEST="
     test do
-      assert_match(/^usage: ${name}/, shell_output(\"#{bin}/${name}\").strip)
+      assert_match(/^${name} /, shell_output(\"#{bin}/${name}\").strip)
     end"
     else
         local TEST=
@@ -149,7 +149,7 @@ elif [ "${CLI_NAME}" = "d" ]; then
       bin.install \"xwsl-ex\" => \"xwsl-ex\"
       bin.install \"xxcodebuild\" => \"xxcodebuild\"
 "
-    create true false
+    create true true
 else
   echo "Unsupported binary: ${CLI_NAME}"
   exit 1
