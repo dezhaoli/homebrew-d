@@ -10,7 +10,7 @@ class D < Formula
     url "https://github.com/dezhaoli/d/archive/3.0.0.tar.gz"
 
     if OS.mac?
-      sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+      sha256 "7eb4556ef24ca0bcd98f2b279c893c891b4ab66f96a19504ac53546fe798a040"
     end
 
 
