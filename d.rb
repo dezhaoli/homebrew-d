@@ -7,7 +7,7 @@ class D < Formula
     homepage "https://github.com/dezhaoli/d"
     version "3.0.0"
 
-    url "https://github.com/dezhaoli/d/archive/3.0.0.tar.gz", :using => GitHubPrivateRepositoryArchiveDownloadStrategy
+    url "https://github.com/dezhaoli/d/archive/3.0.0.tar.gz"
 
     if OS.mac?
       sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
