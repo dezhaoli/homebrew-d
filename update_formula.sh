@@ -34,7 +34,7 @@ function create()
         curl -H 'Authorization: token '$token  \
              -H 'Accept: application/vnd.github.v3.raw' \
              -L -o "${tmp_file}" -s "${base_url}/archive/${version}.tar.gz"
-        local INSERT_1=', :using => GitHubPrivateRepositoryArchiveDownloadStrategy'
+        local INSERT_1=', :using => GitHubPrivateRepositoryReleaseDownloadStrategy'
         local INSERT_2='
 require "formula"
 require_relative "lib/private_strategy"'
