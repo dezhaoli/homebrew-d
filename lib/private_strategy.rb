@@ -22,7 +22,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
 
   private
 
-  def _fetch(url:, resolved_url:)
+  def _fetch(url:, resolved_url:, timeout:)
     curl_download download_url, to: temporary_path
   end
 
@@ -38,18 +38,14 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   def validate_github_repository_access!
     # Test access to the repository
     GitHub.repository(@owner, @repo)
-  rescue GitHub::HTTPNotFoundError
-    # We only handle HTTPNotFoundError here,
-    # becase AuthenticationFailedError is handled within util/github.
+  rescue GitHub::API::HTTPNotFoundError
+    # We switched to GitHub::API::HTTPNotFoundError, 
+    # because we can now handle bad credentials messages
     message = <<~EOS
       HOMEBREW_GITHUB_API_TOKEN can not access the repository: #{@owner}/#{@repo}
       This token may not have permission to access the repository or the url of formula may be incorrect.
     EOS
     raise CurlDownloadStrategyError, message
-  end
-  def resolve_url_basename_time_file_size(url)
-    url = download_url
-    super
   end
 end
 
@@ -78,7 +74,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
 
   private
 
-  def _fetch(url:, resolved_url:)
+  def _fetch(url:, resolved_url:, timeout:)
     # HTTP request header `Accept: application/octet-stream` is required.
     # Without this, the GitHub API will respond with metadata, not binary.
     curl_download download_url, "--header", "Accept: application/octet-stream", to: temporary_path
@@ -97,11 +93,8 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   end
 
   def fetch_release_metadata
-    release_url = "https://api.github.com/repos/#{@owner}/#{@repo}/releases/tags/#{@tag}"
-    GitHub.open_api(release_url)
-  end
-  def resolve_url_basename_time_file_size(url, timeout: nil)
-    url = download_url
-    super
+    #release_url = "https://api.github.com/repos/#{@owner}/#{@repo}/releases/tags/#{@tag}"
+    #GitHub::API.open_rest(release_url)
+    GitHub.get_release(@owner, @repo, @tag)
   end
 end
