@@ -47,7 +47,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     EOS
     raise CurlDownloadStrategyError, message
   end
-  def resolve_url_basename_time_file_size(url, timeout: nil)
+  def resolve_url_basename_time_file_size(url)
     url = download_url
     super
   end
