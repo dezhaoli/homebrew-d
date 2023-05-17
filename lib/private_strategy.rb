@@ -47,6 +47,9 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     EOS
     raise CurlDownloadStrategyError, message
   end
+    def resolve_url_basename_time_file_size(url, timeout: nil)
+    [download_url, "", Time.now, 0, false]
+  end
 end
 
 # GitHubPrivateRepositoryReleaseDownloadStrategy downloads tarballs from GitHub
