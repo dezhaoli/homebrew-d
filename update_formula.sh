@@ -1,10 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env -S bash
 ###########################################################
 # @Author: dezhaoli@tencent.com
 # @Date:   
 # Please contact dezhaoli if you have any questions.
 ###########################################################
-
 
 
 
@@ -26,15 +25,14 @@ function create()
     local base_url="https://github.com/dezhaoli/$name"
 
     # OSX
-    local tmp_file="/tmp/${name}"
-    rm -f ${tmp_file}
+    local tmp_file=$(mktemp)
 
 
     if $is_private; then
         curl -H 'Authorization: token '$token  \
              -H 'Accept: application/vnd.github.v3.raw' \
              -L -o "${tmp_file}" -s "${base_url}/archive/${version}.tar.gz"
-        local INSERT_1=', :using => GitHubPrivateRepositoryReleaseDownloadStrategy'
+        local INSERT_1=', :using => GitHubPrivateRepositoryDownloadStrategy'
         local INSERT_2='
 require "formula"
 require_relative "lib/private_strategy"'
@@ -96,10 +94,23 @@ class $(tr 'a-z' 'A-Z' <<< ${class_name:0:1})${class_name:1} < Formula
 
 end"
 
+    # xxd ${tmp_file}
+    rm -f ${tmp_file}
     echo "${TEMPLATE}" > "$(dirname "$0")/${name}.rb"
 }
 
 
+
+
+if [[ -z "$HOMEBREW_GITHUB_API_TOKEN" ]]; then
+  RC_PROJECT_CONFIG_FILE=~/.d/project_configs.json
+  read -r -d$'\1' "HOMEBREW_GITHUB_API_TOKEN" < <(jq --raw-output  '.env.homebrew_token '  "$RC_PROJECT_CONFIG_FILE" )
+  echo "HOMEBREW_GITHUB_API_TOKEN=$HOMEBREW_GITHUB_API_TOKEN"
+fi
+if [[ -z "$HOMEBREW_GITHUB_API_TOKEN" ]]; then
+  echo "Usage: [HOMEBREW_GITHUB_API_TOKEN] $(basename $0) <xargparse> <VERSION>"
+  exit 1
+fi
 
 set -e -x
 
@@ -107,6 +118,10 @@ if (($#!=2)); then
   echo "Usage: [HOMEBREW_GITHUB_API_TOKEN] $(basename $0) <xargparse> <VERSION>"
   exit 1
 fi
+
+
+
+
 
 CLI_NAME="$1"
 VERSION="$2"
