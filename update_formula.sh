@@ -94,7 +94,7 @@ class $(tr 'a-z' 'A-Z' <<< ${class_name:0:1})${class_name:1} < Formula
 
 end"
 
-    # xxd ${tmp_file}
+    xxd ${tmp_file} | head -3
     rm -f ${tmp_file}
     echo "${TEMPLATE}" > "$(dirname "$0")/${name}.rb"
 }
@@ -112,7 +112,7 @@ if [[ -z "$HOMEBREW_GITHUB_API_TOKEN" ]]; then
   exit 1
 fi
 
-set -e -x
+set -e #-x
 
 if (($#!=2)); then
   echo "Usage: [HOMEBREW_GITHUB_API_TOKEN] $(basename $0) <xargparse> <VERSION>"
