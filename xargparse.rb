@@ -3,12 +3,12 @@
 class Xargparse < Formula
     desc "Parser for command-line options, arguments and sub-commands"
     homepage "https://github.com/dezhaoli/xargparse"
-    version "v3.1.3"
+    version "v3.1.4"
 
-    url "https://github.com/dezhaoli/xargparse/archive/v3.1.3.tar.gz"
+    url "https://github.com/dezhaoli/xargparse/archive/v3.1.4.tar.gz"
 
     if OS.mac?
-      sha256 "9c6ddf5bc2c3e92522de9da5c1d2b14e40b0a0f0b5a2a0557eb3228d8d221d96"
+      sha256 "81eec3eb802a96fb4670ae52883d1bcc5f1ab1a3989a6dec8c57d5569888cb20"
     end
 
 
