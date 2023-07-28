@@ -103,8 +103,8 @@ end"
 
 
 if [[ -z "$HOMEBREW_GITHUB_API_TOKEN" ]]; then
-  RC_PROJECT_CONFIG_FILE=~/.d/project_configs.json
-  read -r -d$'\1' "HOMEBREW_GITHUB_API_TOKEN" < <(jq --raw-output  '.env.homebrew_token '  "$RC_PROJECT_CONFIG_FILE" )
+  RC_COMMON_CONFIG_FILE="/Users/dezhaoli/Desktop/build/common_configs.json"
+  read -r -d$'\1' "HOMEBREW_GITHUB_API_TOKEN" < <(jq --raw-output  '.homebrew_token '  "$RC_COMMON_CONFIG_FILE" )
   echo "HOMEBREW_GITHUB_API_TOKEN=$HOMEBREW_GITHUB_API_TOKEN"
 fi
 if [[ -z "$HOMEBREW_GITHUB_API_TOKEN" ]]; then
