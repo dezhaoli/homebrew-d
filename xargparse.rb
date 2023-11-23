@@ -3,12 +3,12 @@
 class Xargparse < Formula
     desc "Parser for command-line options, arguments and sub-commands"
     homepage "https://github.com/dezhaoli/xargparse"
-    version "v3.1.5"
+    version "v4.0.0"
 
-    url "https://github.com/dezhaoli/xargparse/archive/v3.1.5.tar.gz"
+    url "https://github.com/dezhaoli/xargparse/archive/v4.0.0.tar.gz"
 
     if OS.mac?
-      sha256 "79d07be61394748bafe5ada1bd2cdcbf7e9f82879ecb245918f56a8093777789"
+      sha256 "1c4fd480795016b446ac8727013342433bf729f545599237523e78aabee678c7"
     end
 
 
@@ -19,9 +19,12 @@ class Xargparse < Formula
     depends_on "coreutils"
 
     def install
-      bin.install "xargparse" => "xargparse"
       
+      bin.install "xargparse" => "xargparse"
       bin.install "xcomplete" => "xcomplete"
+      bin.install "xformat" => "xformat"
+      bin.install "xwsl-ex" => "xwsl-ex"
+      bin.install "d" => "d"
       bash_completion.install_symlink bin/"xcomplete"
 
     end

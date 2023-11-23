@@ -78,7 +78,6 @@ class $(tr 'a-z' 'A-Z' <<< ${class_name:0:1})${class_name:1} < Formula
     depends_on \"coreutils\"
 
     def install
-      bin.install \"${name}\" => \"${name}\"
       ${ex_install}
     end
 
@@ -134,7 +133,11 @@ if [ "${CLI_NAME}" = "xargparse" ]; then
     CAVEATS="Add the following line to your ~/.bash_profile:
           [[ -r \"#{bin}/xcomplete\" ]] && . \"#{bin}/xcomplete\""
     EX_INSTALL="
+      bin.install \"xargparse\" => \"xargparse\"
       bin.install \"xcomplete\" => \"xcomplete\"
+      bin.install \"xformat\" => \"xformat\"
+      bin.install \"xwsl-ex\" => \"xwsl-ex\"
+      bin.install \"d\" => \"d\"
       bash_completion.install_symlink bin/\"xcomplete\"
 "
     create false true
@@ -152,7 +155,6 @@ elif [ "${CLI_NAME}" = "d" ]; then
 
       bin.install \"xbkapi\" => \"xbkapi\"
       bin.install \"xcatch-build-err\" => \"xcatch-build-err\"
-      bin.install \"xformat\" => \"xformat\"
       bin.install \"xgcloud\" => \"xgcloud\"
       bin.install \"xlink\" => \"xlink\"  
       bin.install \"xnifs\" => \"xnifs\"  
@@ -161,7 +163,6 @@ elif [ "${CLI_NAME}" = "d" ]; then
       bin.install \"xrecord\" => \"xrecord\"
       bin.install \"xrobot\" => \"xrobot\"
       bin.install \"xsvn\" => \"xsvn\"
-      bin.install \"xwsl-ex\" => \"xwsl-ex\"
       bin.install \"xxcodebuild\" => \"xxcodebuild\"
 "
     create true true

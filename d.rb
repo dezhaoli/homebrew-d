@@ -5,12 +5,12 @@ require_relative "lib/private_strategy"
 class D < Formula
     desc "X toolkit"
     homepage "https://github.com/dezhaoli/d"
-    version "v3.1.11"
+    version "v4.0.0"
 
-    url "https://github.com/dezhaoli/d/archive/v3.1.11.tar.gz", :using => GitHubPrivateRepositoryDownloadStrategy
+    url "https://github.com/dezhaoli/d/archive/v4.0.0.tar.gz", :using => GitHubPrivateRepositoryDownloadStrategy
 
     if OS.mac?
-      sha256 "c80a5a269427a6baadf9f4b0974cbe52f8e536388c40231965d746fb57680c2a"
+      sha256 "a752bd8f30fd18426c3ca8f0c73c0d19615dd140a1468aa35952d99fb92ba12a"
     end
 
 
@@ -21,7 +21,6 @@ class D < Formula
     depends_on "coreutils"
 
     def install
-      bin.install "d" => "d"
       
       bin.install "gcloud_form_file.py" => "gcloud_form_file.py"
       bin.install "gcloud_api_v1.py" => "gcloud_api_v1.py"
@@ -30,7 +29,6 @@ class D < Formula
 
       bin.install "xbkapi" => "xbkapi"
       bin.install "xcatch-build-err" => "xcatch-build-err"
-      bin.install "xformat" => "xformat"
       bin.install "xgcloud" => "xgcloud"
       bin.install "xlink" => "xlink"  
       bin.install "xnifs" => "xnifs"  
@@ -39,7 +37,6 @@ class D < Formula
       bin.install "xrecord" => "xrecord"
       bin.install "xrobot" => "xrobot"
       bin.install "xsvn" => "xsvn"
-      bin.install "xwsl-ex" => "xwsl-ex"
       bin.install "xxcodebuild" => "xxcodebuild"
 
     end
