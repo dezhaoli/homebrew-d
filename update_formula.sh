@@ -172,7 +172,7 @@ elif [ "${CLI_NAME}" = "d" ]; then
       bin.install \"xxcodebuild\" => \"xxcodebuild\"
       bin.install \"xzip\" => \"xzip\"
 "
-    create true true
+    create false true
 else
   echo "Unsupported binary: ${CLI_NAME}"
   exit 1

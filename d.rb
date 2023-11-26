@@ -1,13 +1,11 @@
 # This is an auto-generated file. DO NOT EDIT 
 
-require "formula"
-require_relative "lib/private_strategy"
 class D < Formula
     desc "X toolkit"
     homepage "https://github.com/dezhaoli/d"
     version "v4.1.0"
 
-    url "https://github.com/dezhaoli/d/archive/v4.1.0.tar.gz", :using => GitHubPrivateRepositoryDownloadStrategy
+    url "https://github.com/dezhaoli/d/archive/v4.1.0.tar.gz"
 
     if OS.mac?
       sha256 "b3f06a5484f0574fe703a916aaebaa56a2a931d30e53026ac0afb6ca88634a26"
