@@ -5,12 +5,12 @@ require_relative "lib/private_strategy"
 class D < Formula
     desc "X toolkit"
     homepage "https://github.com/dezhaoli/d"
-    version "v4.0.0"
+    version "v4.1.0"
 
-    url "https://github.com/dezhaoli/d/archive/v4.0.0.tar.gz", :using => GitHubPrivateRepositoryDownloadStrategy
+    url "https://github.com/dezhaoli/d/archive/v4.1.0.tar.gz", :using => GitHubPrivateRepositoryDownloadStrategy
 
     if OS.mac?
-      sha256 "a752bd8f30fd18426c3ca8f0c73c0d19615dd140a1468aa35952d99fb92ba12a"
+      sha256 "b3f06a5484f0574fe703a916aaebaa56a2a931d30e53026ac0afb6ca88634a26"
     end
 
 
@@ -22,22 +22,28 @@ class D < Formula
 
     def install
       
-      bin.install "gcloud_form_file.py" => "gcloud_form_file.py"
       bin.install "gcloud_api_v1.py" => "gcloud_api_v1.py"
       bin.install "gcloud_api_v2.py" => "gcloud_api_v2.py"
+      bin.install "gcloud_form_file.py" => "gcloud_form_file.py"
       bin.install "gcloud_openapi.py" => "gcloud_openapi.py"
+
+      bin.install "get-chrome-cookies-win.py" => "get-chrome-cookies-win.py"
+      bin.install "get-chrome-cookies.py" => "get-chrome-cookies.py"
 
       bin.install "xbkapi" => "xbkapi"
       bin.install "xcatch-build-err" => "xcatch-build-err"
+      bin.install "xchrome-cookies" => "xchrome-cookies"
       bin.install "xgcloud" => "xgcloud"
       bin.install "xlink" => "xlink"  
-      bin.install "xnifs" => "xnifs"  
       bin.install "xpair" => "xpair"
       bin.install "xparallel" => "xparallel"
+      bin.install "xpidcat" => "xpidcat"
       bin.install "xrecord" => "xrecord"
       bin.install "xrobot" => "xrobot"
       bin.install "xsvn" => "xsvn"
+      bin.install "xunity" => "xunity"
       bin.install "xxcodebuild" => "xxcodebuild"
+      bin.install "xzip" => "xzip"
 
     end
 

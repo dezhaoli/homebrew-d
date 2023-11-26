@@ -3,12 +3,12 @@
 class Xargparse < Formula
     desc "Parser for command-line options, arguments and sub-commands"
     homepage "https://github.com/dezhaoli/xargparse"
-    version "v4.0.0"
+    version "v4.1.0"
 
-    url "https://github.com/dezhaoli/xargparse/archive/v4.0.0.tar.gz"
+    url "https://github.com/dezhaoli/xargparse/archive/v4.1.0.tar.gz"
 
     if OS.mac?
-      sha256 "1c4fd480795016b446ac8727013342433bf729f545599237523e78aabee678c7"
+      sha256 "2718a2b5e33eae121ea409b87f1d4e8da1358e3a310a1ce29f6f6ea650a66bdc"
     end
 
 
@@ -33,6 +33,7 @@ class Xargparse < Formula
     def caveats
       <<~EOS
         Add the following line to your ~/.bash_profile:
+          #call xcomplete after bash_completion
           [[ -r "#{bin}/xcomplete" ]] && . "#{bin}/xcomplete"
       EOS
     end
