@@ -27,9 +27,9 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   end
 
   def set_github_token
-    @github_token = ENV["HOMEBREW_GITHUB_API_TOKEN"]
+    @github_token = ENV["_D_HGAT_"]
     unless @github_token
-      raise CurlDownloadStrategyError, "Environmental variable HOMEBREW_GITHUB_API_TOKEN is required."
+      raise CurlDownloadStrategyError, "Environmental variable _D_HGAT_ is required."
     end
 
     validate_github_repository_access!
@@ -42,7 +42,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     # We switched to GitHub::API::HTTPNotFoundError, 
     # because we can now handle bad credentials messages
     message = <<~EOS
-      HOMEBREW_GITHUB_API_TOKEN can not access the repository: #{@owner}/#{@repo}
+      _D_HGAT_ can not access the repository: #{@owner}/#{@repo}
       This token may not have permission to access the repository or the url of formula may be incorrect.
     EOS
     raise CurlDownloadStrategyError, message
@@ -56,7 +56,7 @@ end
 # Release assets. To use it, add
 # `:using => GitHubPrivateRepositoryReleaseDownloadStrategy` to the URL section of
 # your formula. This download strategy uses GitHub access tokens (in the
-# environment variables HOMEBREW_GITHUB_API_TOKEN) to sign the request.
+# environment variables _D_HGAT_) to sign the request.
 class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDownloadStrategy
   def initialize(url, name, version, **meta)
     super

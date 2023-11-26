@@ -13,7 +13,7 @@ function create()
 {
     local is_private=${1:-false}
     local is_test=${2:-false}
-    local token="$HOMEBREW_GITHUB_API_TOKEN"
+    local token="$_D_HGAT_"
 
     local name="$CLI_NAME"
     local version="$VERSION"
@@ -101,20 +101,20 @@ end"
 
 
 
-if [[ -z "$HOMEBREW_GITHUB_API_TOKEN" ]]; then
+if [[ -z "$_D_HGAT_" ]]; then
   RC_COMMON_CONFIG_FILE="/Users/dezhaoli/Desktop/build/common_configs.json"
-  read -r -d$'\1' "HOMEBREW_GITHUB_API_TOKEN" < <(jq --raw-output  '.homebrew_token '  "$RC_COMMON_CONFIG_FILE" )
-  echo "HOMEBREW_GITHUB_API_TOKEN=$HOMEBREW_GITHUB_API_TOKEN"
+  read -r -d$'\1' "_D_HGAT_" < <(jq --raw-output  '.homebrew_token '  "$RC_COMMON_CONFIG_FILE" )
+  echo "_D_HGAT_=$_D_HGAT_"
 fi
-if [[ -z "$HOMEBREW_GITHUB_API_TOKEN" ]]; then
-  echo "Usage: [HOMEBREW_GITHUB_API_TOKEN] $(basename $0) <xargparse> <VERSION>"
+if [[ -z "$_D_HGAT_" ]]; then
+  echo "Usage: [_D_HGAT_] $(basename $0) <xargparse> <VERSION>"
   exit 1
 fi
 
 set -e #-x
 
 if (($#!=2)); then
-  echo "Usage: [HOMEBREW_GITHUB_API_TOKEN] $(basename $0) <xargparse> <VERSION>"
+  echo "Usage: [_D_HGAT_] $(basename $0) <xargparse> <VERSION>"
   exit 1
 fi
 
@@ -131,6 +131,7 @@ if [ "${CLI_NAME}" = "xargparse" ]; then
     DESC="Parser for command-line options, arguments and sub-commands"
 
     CAVEATS="Add the following line to your ~/.bash_profile:
+          #call xcomplete after bash_completion
           [[ -r \"#{bin}/xcomplete\" ]] && . \"#{bin}/xcomplete\""
     EX_INSTALL="
       bin.install \"xargparse\" => \"xargparse\"
