@@ -3,12 +3,12 @@
 class D < Formula
     desc "X toolkit"
     homepage "https://github.com/dezhaoli/d"
-    version "v4.1.6"
+    version "v4.1.7"
 
-    url "https://github.com/dezhaoli/d/archive/v4.1.6.tar.gz"
+    url "https://github.com/dezhaoli/d/archive/v4.1.7.tar.gz"
 
     if OS.mac?
-      sha256 "122b6c868ddc8d8022b4c039dda88a084f50b8d0b4d060fc09a842fe419aef66"
+      sha256 "d127867da1ed9202e61790e18d4a37172b2fb62473df7034b799b3f8042e197e"
     end
 
 
